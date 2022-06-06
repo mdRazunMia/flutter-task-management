@@ -1,6 +1,5 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
@@ -255,104 +254,369 @@ class HomeScreen extends StatelessWidget {
                       InkWell(
                         onTap: () => {
                           showDialog(
-                              context: context,
-                              builder: (_) {
-                                return AlertDialog(
-                                  actions: [],
-                                  insetPadding: const EdgeInsets.only(
-                                    top: 100,
+                            context: context,
+                            builder: (_) {
+                              return AlertDialog(
+                                actions: [],
+                                insetPadding: const EdgeInsets.only(
+                                  top: 100,
+                                ),
+                                title: const Text(
+                                  "Forget your password?",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Color(0x44444444),
                                   ),
-                                  title: const Text(
-                                    "Forget your password?",
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      color: Color(0x44444444),
-                                    ),
-                                  ),
-                                  content: Container(
-                                    height: 150,
-                                    width: 300,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Form(
-                                          child: Container(
-                                            margin: const EdgeInsets.only(
-                                                top: 10, right: 10),
-                                            child: Column(
-                                              children: [
-                                                const TextField(
-                                                  keyboardType:
-                                                      TextInputType.text,
-                                                  decoration: InputDecoration(
-                                                    isDense: true,
-                                                    hintText:
-                                                        'Enter your Email or phone',
-                                                    hintStyle: TextStyle(
-                                                      fontSize: 16,
-                                                      color: Color(0x44444444),
+                                ),
+                                content: Container(
+                                  height: 150,
+                                  width: 300,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Form(
+                                        child: Container(
+                                          margin: const EdgeInsets.only(
+                                            top: 10,
+                                            right: 10,
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              const TextField(
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                decoration: InputDecoration(
+                                                  isDense: true,
+                                                  hintText:
+                                                      'Enter your Email or phone',
+                                                  hintStyle: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Color(0x44444444),
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 20,
+                                              ),
+                                              SizedBox(
+                                                height: 40,
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  children: [
+                                                    ElevatedButton(
+                                                      onPressed: () {
+                                                        Get.back();
+                                                      },
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        primary: Colors.white,
+                                                      ),
+                                                      child: const Text(
+                                                        "Cancel",
+                                                        style: TextStyle(
+                                                          color:
+                                                              Color(0x44444444),
+                                                          fontSize: 16,
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
+                                                    const SizedBox(
+                                                      width: 20,
+                                                    ),
+                                                    ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        primary: Colors.black,
+                                                      ),
+                                                      onPressed: () {
+                                                        Get.back();
+                                                        showDialog(
+                                                            context: context,
+                                                            builder: (_) {
+                                                              return AlertDialog(
+                                                                insetPadding:
+                                                                    const EdgeInsets
+                                                                        .only(
+                                                                  top: 100,
+                                                                ),
+                                                                title:
+                                                                    const Text(
+                                                                  "Submit OTP",
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        20,
+                                                                    color: Color(
+                                                                        0x44444444),
+                                                                  ),
+                                                                ),
+                                                                content:
+                                                                    Container(
+                                                                  height: 150,
+                                                                  width: 300,
+                                                                  child: Column(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .center,
+                                                                    children: [
+                                                                      Form(
+                                                                        child:
+                                                                            Container(
+                                                                          margin:
+                                                                              const EdgeInsets.only(
+                                                                            top:
+                                                                                10,
+                                                                            right:
+                                                                                10,
+                                                                          ),
+                                                                          child:
+                                                                              Column(
+                                                                            children: [
+                                                                              SizedBox(
+                                                                                height: 40,
+                                                                                child: Row(
+                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                  children: const [
+                                                                                    SizedBox(
+                                                                                      width: 20,
+                                                                                      height: 38,
+                                                                                      child: TextField(
+                                                                                        keyboardType: TextInputType.number,
+                                                                                      ),
+                                                                                    ),
+                                                                                    SizedBox(
+                                                                                      width: 20,
+                                                                                      height: 38,
+                                                                                      child: TextField(
+                                                                                        keyboardType: TextInputType.number,
+                                                                                      ),
+                                                                                    ),
+                                                                                    SizedBox(
+                                                                                      width: 20,
+                                                                                      height: 38,
+                                                                                      child: TextField(
+                                                                                        keyboardType: TextInputType.number,
+                                                                                      ),
+                                                                                    ),
+                                                                                    SizedBox(
+                                                                                      width: 20,
+                                                                                      height: 38,
+                                                                                      child: TextField(
+                                                                                        keyboardType: TextInputType.number,
+                                                                                      ),
+                                                                                    ),
+                                                                                    SizedBox(
+                                                                                      width: 20,
+                                                                                      height: 38,
+                                                                                      child: TextField(
+                                                                                        keyboardType: TextInputType.number,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                              const SizedBox(
+                                                                                height: 20,
+                                                                              ),
+                                                                              SizedBox(
+                                                                                height: 40,
+                                                                                child: Row(
+                                                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                                                  children: [
+                                                                                    ElevatedButton(
+                                                                                      onPressed: () {
+                                                                                        Get.back();
+                                                                                      },
+                                                                                      style: ElevatedButton.styleFrom(
+                                                                                        primary: Colors.white,
+                                                                                      ),
+                                                                                      child: const Text(
+                                                                                        "Cancel",
+                                                                                        style: TextStyle(
+                                                                                          color: Color(0x44444444),
+                                                                                          fontSize: 16,
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                    const SizedBox(
+                                                                                      width: 20,
+                                                                                    ),
+                                                                                    ElevatedButton(
+                                                                                      onPressed: () {
+                                                                                        Get.back();
+                                                                                        showDialog(
+                                                                                          context: context,
+                                                                                          builder: (_) {
+                                                                                            return AlertDialog(
+                                                                                              insetPadding: const EdgeInsets.only(
+                                                                                                top: 100,
+                                                                                              ),
+                                                                                              title: const Text(
+                                                                                                "Set new password",
+                                                                                                style: TextStyle(
+                                                                                                  fontSize: 20,
+                                                                                                  color: Color(0x44444444),
+                                                                                                ),
+                                                                                              ),
+                                                                                              content: Container(
+                                                                                                height: 150,
+                                                                                                width: 300,
+                                                                                                child: Column(
+                                                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                                                                  children: [
+                                                                                                    Form(
+                                                                                                      child: Container(
+                                                                                                        margin: const EdgeInsets.only(
+                                                                                                          right: 10,
+                                                                                                        ),
+                                                                                                        child: Column(
+                                                                                                          children: [
+                                                                                                            SizedBox(
+                                                                                                              height: 70,
+                                                                                                              child: Column(
+                                                                                                                children: const [
+                                                                                                                  SizedBox(
+                                                                                                                    height: 30,
+                                                                                                                    child: TextField(
+                                                                                                                      keyboardType: TextInputType.text,
+                                                                                                                      decoration: InputDecoration(
+                                                                                                                        isDense: true,
+                                                                                                                        hintText: 'Type new password',
+                                                                                                                        hintStyle: TextStyle(
+                                                                                                                          fontSize: 16,
+                                                                                                                          color: Color(0x44444444),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                  ),
+                                                                                                                  SizedBox(
+                                                                                                                    height: 10,
+                                                                                                                  ),
+                                                                                                                  SizedBox(
+                                                                                                                    height: 30,
+                                                                                                                    child: TextField(
+                                                                                                                      keyboardType: TextInputType.text,
+                                                                                                                      decoration: InputDecoration(
+                                                                                                                        isDense: true,
+                                                                                                                        hintText: 'Confirm password',
+                                                                                                                        hintStyle: TextStyle(
+                                                                                                                          fontSize: 16,
+                                                                                                                          color: Color(0x44444444),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                  ),
+                                                                                                                ],
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                            const SizedBox(
+                                                                                                              height: 10,
+                                                                                                            ),
+                                                                                                            SizedBox(
+                                                                                                              height: 40,
+                                                                                                              child: Row(
+                                                                                                                mainAxisAlignment: MainAxisAlignment.end,
+                                                                                                                children: [
+                                                                                                                  ElevatedButton(
+                                                                                                                    onPressed: () {
+                                                                                                                      Get.back();
+                                                                                                                    },
+                                                                                                                    style: ElevatedButton.styleFrom(
+                                                                                                                      primary: Colors.white,
+                                                                                                                    ),
+                                                                                                                    child: const Text(
+                                                                                                                      "Cancel",
+                                                                                                                      style: TextStyle(
+                                                                                                                        color: Color(0x44444444),
+                                                                                                                        fontSize: 16,
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                  ),
+                                                                                                                  const SizedBox(
+                                                                                                                    width: 20,
+                                                                                                                  ),
+                                                                                                                  ElevatedButton(
+                                                                                                                    onPressed: () {
+                                                                                                                      print("This is submitted password");
+                                                                                                                    },
+                                                                                                                    style: ElevatedButton.styleFrom(
+                                                                                                                      primary: Colors.white,
+                                                                                                                    ),
+                                                                                                                    child: const Text(
+                                                                                                                      "submit",
+                                                                                                                      style: TextStyle(
+                                                                                                                        color: Color(0x44444444),
+                                                                                                                        fontSize: 16,
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                  ),
+                                                                                                                ],
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          ],
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ),
+                                                                                            );
+                                                                                          },
+                                                                                        );
+                                                                                      },
+                                                                                      style: ElevatedButton.styleFrom(
+                                                                                        primary: Colors.black,
+                                                                                      ),
+                                                                                      child: const Text(
+                                                                                        "Submit",
+                                                                                        style: TextStyle(
+                                                                                          color: Color(0x85858585),
+                                                                                          fontSize: 16,
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            });
+                                                      },
+                                                      child: const Text(
+                                                        "Reset",
+                                                        style: TextStyle(
+                                                          color:
+                                                              Color(0x85858585),
+                                                          fontSize: 16,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                                const SizedBox(
-                                                  height: 20,
-                                                ),
-                                                SizedBox(
-                                                  height: 40,
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                    children: [
-                                                      ElevatedButton(
-                                                        onPressed: () {
-                                                          Get.back();
-                                                        },
-                                                        style: ElevatedButton
-                                                            .styleFrom(
-                                                          primary: Colors.white,
-                                                        ),
-                                                        child: const Text(
-                                                          "Cancel",
-                                                          style: TextStyle(
-                                                            color: Color(
-                                                                0x44444444),
-                                                            fontSize: 16,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      const SizedBox(
-                                                        width: 20,
-                                                      ),
-                                                      ElevatedButton(
-                                                        style: ElevatedButton
-                                                            .styleFrom(
-                                                                primary: Colors
-                                                                    .black),
-                                                        onPressed: null,
-                                                        child: const Text(
-                                                          "Reset",
-                                                          style: TextStyle(
-                                                            color: Color(
-                                                                0x85858585),
-                                                            fontSize: 16,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            ),
+                                              )
+                                            ],
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
-                                );
-                              })
+                                ),
+                              );
+                            },
+                          )
                         },
                         child: Container(
                           height: 30,
