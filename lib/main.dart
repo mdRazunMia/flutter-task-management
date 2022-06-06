@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task_management/screens/homeScreen.dart';
+
+import './screens/homeScreen.dart';
+import './screens/signupScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +21,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       getPages: [
         GetPage(name: "/", page: () => const HomeScreen()),
+        GetPage(name: "/signupScreen", page: () => const SignupScreen()),
       ],
     );
   }
