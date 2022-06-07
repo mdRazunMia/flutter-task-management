@@ -1,8 +1,8 @@
 // ignore: file_names
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,63 +12,51 @@ class HomeScreen extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (_) {
-              return SimpleDialog(
-                children: [
-                  Container(
-                    width: 200,
-                    height: 30,
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 40,
-                          child: IconButton(
-                            icon: SvgPicture.asset("assets/images/task.svg"),
-                            onPressed: null,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          width: 40,
-                          child: IconButton(
-                            icon: SvgPicture.asset("assets/images/board.svg"),
-                            onPressed: null,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          width: 40,
-                          child: IconButton(
-                            icon: SvgPicture.asset("assets/images/group.svg"),
-                            onPressed: null,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              );
+      floatingActionButton: SpeedDial(
+        direction: SpeedDialDirection.left,
+        children: [
+          SpeedDialChild(
+            backgroundColor: Colors.blue,
+            child: Container(
+              color: Colors.blue,
+              child: SvgPicture.asset("assets/images/group.svg"),
+            ),
+            onTap: () {
+              Get.toNamed("/groupScreen");
             },
-          );
-        },
+          ),
+          SpeedDialChild(
+            backgroundColor: Colors.blue,
+            child: Container(
+              color: Colors.blue,
+              child: SvgPicture.asset("assets/images/board.svg"),
+            ),
+            onTap: () {
+              Get.toNamed("/boardScreen");
+            },
+          ),
+          SpeedDialChild(
+            backgroundColor: Colors.blue,
+            child: Container(
+              color: Colors.blue,
+              child: SvgPicture.asset("assets/images/task.svg"),
+            ),
+            onTap: () {
+              Get.toNamed("/taskScreen");
+            },
+          ),
+        ],
         child: Container(
           height: 50,
           width: 50,
-          margin: const EdgeInsets.only(top: 20, left: 5),
+          margin: const EdgeInsets.only(
+            top: 15,
+            left: 10,
+          ),
           child: SvgPicture.asset(
-            "assets/images/new_plus.svg",
-            fit: BoxFit.cover,
+            "assets/images/plus.svg",
+            height: 40,
+            width: 40,
           ),
         ),
       ),
