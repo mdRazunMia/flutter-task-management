@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class TaskScreen extends StatelessWidget {
   const TaskScreen({Key? key}) : super(key: key);
@@ -10,7 +13,42 @@ class TaskScreen extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Tasks"),
+        elevation: 0.0,
+        leading: Padding(
+          padding: const EdgeInsets.only(right: 20.0),
+          child: GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: const Icon(
+              Icons.arrow_back,
+              size: 26.0,
+              color: Colors.grey,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.white,
+        title: const Text(
+          "Tasks",
+          style: TextStyle(
+            color: Color(0x44444444),
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              onTap: () {
+                print("Search icon has been pressed.");
+              },
+              child: const Icon(
+                Icons.search,
+                size: 26.0,
+                color: Colors.grey,
+              ),
+            ),
+          )
+        ],
       ),
       body: SafeArea(
         child: Column(
@@ -18,6 +56,7 @@ class TaskScreen extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
+                color: Colors.white,
                 height: height,
                 width: width,
                 child: ListView.builder(
@@ -26,7 +65,7 @@ class TaskScreen extends StatelessWidget {
                     return Container(
                       height: 60,
                       width: width,
-                      margin: EdgeInsets.all(
+                      margin: const EdgeInsets.all(
                         5,
                       ),
                       decoration: BoxDecoration(
@@ -48,23 +87,6 @@ class TaskScreen extends StatelessWidget {
                                 color: Colors.grey,
                                 style: BorderStyle.solid,
                               ),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Colors.greenAccent,
-                                  offset: Offset(
-                                    5.0,
-                                    5.0,
-                                  ),
-                                  blurRadius: 10.0,
-                                  spreadRadius: 2.0,
-                                ), //BoxShadow
-                                BoxShadow(
-                                  color: Colors.white,
-                                  offset: Offset(0.0, 0.0),
-                                  blurRadius: 0.0,
-                                  spreadRadius: 0.0,
-                                ),
-                              ],
                             ),
                           ),
                           Expanded(
@@ -72,7 +94,11 @@ class TaskScreen extends StatelessWidget {
                               margin: const EdgeInsets.only(
                                 left: 10,
                               ),
-                              child: const Text("Hello"),
+                              child: const Text(
+                                "Hello Hello Hello Hello Hello Hello Hello Hello  Hello Hello Hello Hello  Hello Hello Hello Hello  Hello Hello Hello Hello  Hello Hello Hello Hello  Hello Hello Hello Hello HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello",
+                                softWrap: true,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
                           ),
                         ],
@@ -142,7 +168,6 @@ class TaskScreen extends StatelessWidget {
                             left: 5,
                           ),
                           child: const TextField(
-                            obscureText: true,
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               isDense: true,
@@ -157,13 +182,13 @@ class TaskScreen extends StatelessWidget {
                   ),
                   Container(
                     width: 100,
+                    height: 100,
+                    margin: const EdgeInsets.only(
+                      left: 10,
+                    ),
                     child: IconButton(
-                      icon: const Icon(
-                        Icons.arrow_circle_up,
-                      ),
-                      iconSize: 50,
-                      color: Colors.green,
-                      splashColor: Colors.purple,
+                      icon: SvgPicture.asset("assets/images/up_arrow.svg"),
+                      iconSize: 70,
                       onPressed: () {},
                     ),
                   ),
