@@ -5,9 +5,14 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   // ignore: non_constant_identifier_names
   final List<String> GroupOrSubGroupItems = [
     'Group A',
@@ -29,6 +34,8 @@ class HomeScreen extends StatelessWidget {
   ];
 
   String? selectedValue;
+
+  int selectedBottomNavigationIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -514,9 +521,19 @@ class HomeScreen extends StatelessWidget {
             label: 'Calender',
           ),
         ],
-        // currentIndex: _selectedIndex,
-        // selectedItemColor: Colors.amber[800],
-        onTap: null,
+        currentIndex: selectedBottomNavigationIndex,
+        onTap: (int index) {
+          setState(() {
+            selectedBottomNavigationIndex = index;
+            if (selectedBottomNavigationIndex == 0) {
+              Get.toNamed("/taskScreen");
+            } else if (selectedBottomNavigationIndex == 1) {
+              Get.toNamed("/boardListScreen");
+            } else if (selectedBottomNavigationIndex == 2) {
+              Get.toNamed("/groupListScreen");
+            }
+          });
+        },
       ),
     );
   }

@@ -3,13 +3,510 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class TaskScreen extends StatelessWidget {
+class TaskScreen extends StatefulWidget {
   TaskScreen({Key? key}) : super(key: key);
+
+  @override
+  State<TaskScreen> createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
   bool selectedMode = true;
+
+  int selectedBottomNavigationIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+
+    void _boardColumnDataModelBottomSheet() {
+      showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        backgroundColor: const Color(0x44444444),
+        builder: (context) {
+          return Container(
+            height: height - 99,
+            width: width,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25.0),
+                topRight: Radius.circular(25.0),
+              ),
+            ),
+            alignment: Alignment.topCenter,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 40,
+                  width: width,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 24,
+                        width: 24,
+                        margin: const EdgeInsets.only(top: 20, left: 28),
+                        child: SvgPicture.asset(
+                          color: const Color.fromRGBO(197, 199, 211, 1),
+                          "assets/images/board.svg",
+                          height: 24,
+                          width: 18,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Container(
+                        height: 19,
+                        width: 96,
+                        margin: const EdgeInsets.only(
+                          top: 20,
+                        ),
+                        child: const Text(
+                          "Column A",
+                          style: TextStyle(
+                            color: Color(0x44444444),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 1,
+                  width: width,
+                  color: const Color.fromRGBO(235, 235, 235, 1),
+                ),
+                const SizedBox(
+                  height: 17,
+                ),
+                Container(
+                  height: 401,
+                  width: width,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 40,
+                          width: width,
+                          margin: const EdgeInsets.only(
+                            top: 5,
+                            left: 5,
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed("/boardColumnDataScreen");
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: 24,
+                                  width: 24,
+                                  margin: const EdgeInsets.only(
+                                    top: 5,
+                                    left: 20,
+                                  ),
+                                  child: SvgPicture.asset(
+                                    color:
+                                        const Color.fromRGBO(197, 199, 211, 1),
+                                    "assets/images/board.svg",
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 15,
+                                ),
+                                Container(
+                                  height: 19,
+                                  width: width - 97,
+                                  margin: const EdgeInsets.only(
+                                    top: 10,
+                                  ),
+                                  child: const Text(
+                                    "Column A",
+                                    style: TextStyle(
+                                      color: Color(0x44444444),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 40,
+                          width: width,
+                          margin: const EdgeInsets.only(
+                            top: 5,
+                            left: 5,
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              // _boardColumnModelBottomSheet();
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: 24,
+                                  width: 24,
+                                  margin: const EdgeInsets.only(
+                                    top: 5,
+                                    left: 20,
+                                  ),
+                                  child: SvgPicture.asset(
+                                    color:
+                                        const Color.fromRGBO(197, 199, 211, 1),
+                                    "assets/images/board.svg",
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 15,
+                                ),
+                                Container(
+                                  height: 19,
+                                  width: width - 97,
+                                  margin: const EdgeInsets.only(
+                                    top: 10,
+                                  ),
+                                  child: const Text(
+                                    "Column B",
+                                    style: TextStyle(
+                                      color: Color(0x44444444),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 18,
+                ),
+                Container(
+                  height: 96,
+                  width: width,
+                  padding: const EdgeInsets.only(
+                    top: 33,
+                  ),
+                  color: const Color(0xE5E5E5E5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 120,
+                        padding: const EdgeInsets.only(
+                          right: 10,
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: const Text(
+                            "Cancel",
+                            style: TextStyle(
+                              color: Color(0x44444444),
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        width: 120,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: const Text(
+                            "Move",
+                            style: TextStyle(
+                              color: Color(0x44444444),
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    }
+
+    void _boardColumnModelBottomSheet() {
+      showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        backgroundColor: const Color(0x44444444),
+        builder: (context) {
+          return Container(
+            height: height - 99,
+            width: width,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25.0),
+                topRight: Radius.circular(25.0),
+              ),
+            ),
+            alignment: Alignment.topCenter,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 40,
+                  width: width,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 24,
+                        width: 24,
+                        margin: const EdgeInsets.only(top: 20, left: 28),
+                        child: SvgPicture.asset(
+                          color: const Color.fromRGBO(197, 199, 211, 1),
+                          "assets/images/board.svg",
+                          height: 24,
+                          width: 18,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Container(
+                        height: 19,
+                        width: 96,
+                        margin: const EdgeInsets.only(
+                          top: 20,
+                        ),
+                        child: const Text(
+                          "Board A",
+                          style: TextStyle(
+                            color: Color(0x44444444),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 1,
+                  width: width,
+                  color: const Color.fromRGBO(235, 235, 235, 1),
+                ),
+                const SizedBox(
+                  height: 17,
+                ),
+                Container(
+                  height: 401,
+                  width: width,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 40,
+                          width: width,
+                          margin: const EdgeInsets.only(
+                            top: 5,
+                            left: 5,
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              _boardColumnDataModelBottomSheet();
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: 24,
+                                  width: 24,
+                                  margin: const EdgeInsets.only(
+                                    top: 5,
+                                    left: 20,
+                                  ),
+                                  child: SvgPicture.asset(
+                                    color:
+                                        const Color.fromRGBO(197, 199, 211, 1),
+                                    "assets/images/board.svg",
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 15,
+                                ),
+                                Container(
+                                  height: 19,
+                                  width: width - 97,
+                                  margin: const EdgeInsets.only(
+                                    top: 10,
+                                  ),
+                                  child: const Text(
+                                    "Column A",
+                                    style: TextStyle(
+                                      color: Color(0x44444444),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 40,
+                          width: width,
+                          margin: const EdgeInsets.only(
+                            top: 5,
+                            left: 5,
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              // _boardColumnModelBottomSheet();
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: 24,
+                                  width: 24,
+                                  margin: const EdgeInsets.only(
+                                    top: 5,
+                                    left: 20,
+                                  ),
+                                  child: SvgPicture.asset(
+                                    color:
+                                        const Color.fromRGBO(197, 199, 211, 1),
+                                    "assets/images/board.svg",
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 15,
+                                ),
+                                Container(
+                                  height: 19,
+                                  width: width - 97,
+                                  margin: const EdgeInsets.only(
+                                    top: 10,
+                                  ),
+                                  child: const Text(
+                                    "Column B",
+                                    style: TextStyle(
+                                      color: Color(0x44444444),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 18,
+                ),
+                Container(
+                  height: 96,
+                  width: width,
+                  padding: const EdgeInsets.only(
+                    top: 33,
+                  ),
+                  color: const Color(0xE5E5E5E5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 120,
+                        padding: const EdgeInsets.only(
+                          right: 10,
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: const Text(
+                            "Cancel",
+                            style: TextStyle(
+                              color: Color(0x44444444),
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        width: 120,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: const Text(
+                            "Move",
+                            style: TextStyle(
+                              color: Color(0x44444444),
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    }
 
     void _showBoardBottomSheet() {
       showModalBottomSheet(
@@ -97,7 +594,9 @@ class TaskScreen extends StatelessWidget {
                             left: 5,
                           ),
                           child: GestureDetector(
-                            onTap: null,
+                            onTap: () {
+                              _boardColumnModelBottomSheet();
+                            },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -288,7 +787,9 @@ class TaskScreen extends StatelessWidget {
                             left: 5,
                           ),
                           child: GestureDetector(
-                            onTap: null,
+                            onTap: () {
+                              // _boardColumnModelBottomSheet();
+                            },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -862,7 +1363,18 @@ class TaskScreen extends StatelessWidget {
         ],
         // currentIndex: _selectedIndex,
         // selectedItemColor: Colors.amber[800],
-        onTap: null,
+        onTap: (int index) {
+          setState(() {
+            selectedBottomNavigationIndex = index;
+            if (selectedBottomNavigationIndex == 0) {
+              Get.toNamed("/taskScreen");
+            } else if (selectedBottomNavigationIndex == 1) {
+              Get.toNamed("/boardListScreen");
+            } else if (selectedBottomNavigationIndex == 2) {
+              Get.toNamed("/groupListScreen");
+            }
+          });
+        },
       ),
     );
   }
