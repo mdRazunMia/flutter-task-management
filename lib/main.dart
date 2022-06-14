@@ -7,8 +7,10 @@ import './screens/signupScreen.dart';
 import './screens/taskScreen.dart';
 import 'screens/boardColumnDataScreen.dart';
 import 'screens/boardScreen.dart';
+import 'screens/groupItemScreen.dart';
 import 'screens/groupListScreen.dart';
 import 'screens/groupScreen.dart';
+import 'screens/subGroupItemsScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +37,10 @@ class MyApp extends StatelessWidget {
             name: "/boardColumnDataScreen",
             page: () => BoardColumnDataScreen()),
         GetPage(name: "/boardListScreen", page: () => const BoardListScreen()),
-        GetPage(name: "/groupListScreen", page: () => const GroupListScreen()),
+        GetPage(name: "/groupListScreen", page: () => GroupListScreen()),
+        GetPage(name: "/groupItemsScreen", page: () => GroupItemsScreen()),
+        GetPage(
+            name: "/subGroupItemsScreen", page: () => SubGroupItemsScreen()),
       ],
     );
   }

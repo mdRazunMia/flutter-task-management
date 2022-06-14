@@ -4,16 +4,17 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class GroupListScreen extends StatefulWidget {
-  GroupListScreen({Key? key}) : super(key: key);
+class GroupItemsScreen extends StatefulWidget {
+  GroupItemsScreen({Key? key}) : super(key: key);
 
   @override
-  State<GroupListScreen> createState() => _GroupListScreenState();
+  State<GroupItemsScreen> createState() => _GroupItemsScreenState();
 }
 
-class _GroupListScreenState extends State<GroupListScreen> {
-  int selectedBottomNavigationIndex = 0;
+class _GroupItemsScreenState extends State<GroupItemsScreen> {
   String? selectedValue;
+  int selectedBottomNavigationIndex = 0;
+
   final List<String> GroupOrSubGroupItems = [
     'Group A',
     'Group B',
@@ -32,11 +33,13 @@ class _GroupListScreenState extends State<GroupListScreen> {
     'Group O',
     'Group P',
   ];
+
+  bool isGroup = true;
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       floatingActionButton: SpeedDial(
         direction: SpeedDialDirection.left,
@@ -467,7 +470,7 @@ class _GroupListScreenState extends State<GroupListScreen> {
           ),
           padding: const EdgeInsets.all(5),
           child: const Text(
-            "Group List",
+            "Group A",
             style: TextStyle(
               color: Color(0x44444444),
             ),
@@ -531,35 +534,56 @@ class _GroupListScreenState extends State<GroupListScreen> {
                     ),
                     child: GestureDetector(
                       onTap: () {
-                        Get.toNamed("/groupItemsScreen");
+                        Get.toNamed("/subGroupItemsScreen");
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            height: 24,
-                            width: 24,
-                            margin: const EdgeInsets.all(10),
-                            child: SvgPicture.asset(
-                              color: const Color.fromRGBO(197, 199, 211, 1),
-                              "assets/images/group.svg",
-                              height: 24,
-                              width: 18,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                          isGroup
+                              ? Container(
+                                  height: 24,
+                                  width: 24,
+                                  margin: const EdgeInsets.all(10),
+                                  child: SvgPicture.asset(
+                                    color:
+                                        const Color.fromRGBO(197, 199, 211, 1),
+                                    "assets/images/group.svg",
+                                    height: 24,
+                                    width: 18,
+                                    fit: BoxFit.fill,
+                                  ),
+                                )
+                              : GestureDetector(
+                                  onTap: null,
+                                  child: Container(
+                                    height: 20,
+                                    width: 20,
+                                    margin: const EdgeInsets.only(
+                                      left: 10,
+                                      top: 10,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        width: 2.0,
+                                        color: Colors.grey,
+                                        style: BorderStyle.solid,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                           const SizedBox(
                             width: 15,
                           ),
                           Container(
                             height: 19,
-                            width: 250,
+                            width: 260,
                             margin: const EdgeInsets.only(
                               top: 10,
                             ),
                             child: Text(
-                              "Group ${index + 1}",
+                              "sub-Group ${index + 1}",
                               style: const TextStyle(
                                 color: Color(0x44444444),
                                 fontSize: 14,
@@ -571,9 +595,7 @@ class _GroupListScreenState extends State<GroupListScreen> {
                             width: 10,
                           ),
                           Container(
-                            margin: const EdgeInsets.only(
-                              left: 10,
-                            ),
+                            width: 30,
                             padding: const EdgeInsets.only(
                               top: 5,
                             ),
