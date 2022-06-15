@@ -10,7 +10,9 @@ import 'screens/boardScreen.dart';
 import 'screens/groupItemScreen.dart';
 import 'screens/groupListScreen.dart';
 import 'screens/groupScreen.dart';
+import 'screens/splashScreen.dart';
 import 'screens/subGroupItemsScreen.dart';
+import 'screens/welcomeScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +28,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: "/",
+      // initialRoute: "/",
+      // initialRoute: "/splashScreen",
       getPages: [
         GetPage(name: "/", page: () => HomeScreen()),
         GetPage(name: "/signupScreen", page: () => const SignupScreen()),
@@ -41,7 +44,9 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/groupItemsScreen", page: () => GroupItemsScreen()),
         GetPage(
             name: "/subGroupItemsScreen", page: () => SubGroupItemsScreen()),
+        GetPage(name: "/splashScreen", page: () => const SplashScreen()),
       ],
+      home: const WelcomeScreen(),
     );
   }
 }
