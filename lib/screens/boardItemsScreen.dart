@@ -4,34 +4,34 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class BoardListScreen extends StatefulWidget {
-  const BoardListScreen({Key? key}) : super(key: key);
+class BoardItemsScreen extends StatefulWidget {
+  const BoardItemsScreen({Key? key}) : super(key: key);
 
   @override
-  State<BoardListScreen> createState() => _BoardListScreenState();
+  State<BoardItemsScreen> createState() => _BoardItemsScreenState();
 }
 
-class _BoardListScreenState extends State<BoardListScreen> {
-  int selectedBottomNavigationIndex = 0;
+class _BoardItemsScreenState extends State<BoardItemsScreen> {
   String? selectedValue;
-  bool searchToggle = false;
-  final List<String> GroupOrSubGroupItems = [
-    'Group A',
-    'Group B',
-    'Group C',
-    'Group D',
-    'Group E',
-    'Group F',
-    'Group G',
-    'Group H',
-    'Group I',
-    'Group J',
-    'Group K',
-    'Group L',
-    'Group M',
-    'Group N',
-    'Group O',
-    'Group P',
+  int selectedBottomNavigationIndex = 0;
+  bool isGroup = false;
+  final List<String> Boards = [
+    'Board A',
+    'Board B',
+    'Board C',
+    'Board D',
+    'Board E',
+    'Board F',
+    'Board G',
+    'Board H',
+    'Board I',
+    'Board J',
+    'Board K',
+    'Board L',
+    'Board M',
+    'Board N',
+    'Board O',
+    'Board P',
   ];
   @override
   Widget build(BuildContext context) {
@@ -143,7 +143,7 @@ class _BoardListScreenState extends State<BoardListScreen> {
                                 dropdownDecoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
-                                items: GroupOrSubGroupItems.map(
+                                items: Boards.map(
                                     (item) => DropdownMenuItem<String>(
                                           value: item,
                                           child: Text(
@@ -329,7 +329,7 @@ class _BoardListScreenState extends State<BoardListScreen> {
                                 dropdownDecoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
-                                items: GroupOrSubGroupItems.map(
+                                items: Boards.map(
                                     (item) => DropdownMenuItem<String>(
                                           value: item,
                                           child: Text(
@@ -467,72 +467,27 @@ class _BoardListScreenState extends State<BoardListScreen> {
           ),
           padding: const EdgeInsets.all(5),
           child: const Text(
-            "Board List",
+            "Board 1",
             style: TextStyle(
               color: Color(0x44444444),
             ),
           ),
         ),
         actions: [
-          searchToggle
-              ? Container(
-                  width: 160,
-                  height: 30,
-                  color: Colors.red,
-                  margin: const EdgeInsets.only(
-                    top: 11.0,
-                    left: 10.0,
-                  ),
-                  // padding: const EdgeInsets.only(
-                  //   top: 10,
-                  // ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      // const Form(
-                      //   child: TextField(
-                      //     decoration: InputDecoration(hintText: "Search Item."),
-                      //   ),
-                      // ),
-                      const Expanded(
-                        child: Text("Hello"),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            searchToggle = !searchToggle;
-                          });
-                        },
-                        child: const Icon(
-                          Icons.search,
-                          color: Color.fromRGBO(197, 199, 211, 1),
-                          size: 30,
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              : Container(
-                  margin: const EdgeInsets.only(right: 14.0),
-                  padding: const EdgeInsets.only(
-                    top: 5,
-                  ),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        searchToggle = !searchToggle;
-                      });
-                    },
-                    child: const Icon(
-                      Icons.search,
-                      color: Color.fromRGBO(197, 199, 211, 1),
-                      size: 30,
-                    ),
-                  ),
-                ),
+          Container(
+            margin: const EdgeInsets.only(right: 14.0),
+            padding: const EdgeInsets.only(
+              top: 5,
+            ),
+            child: GestureDetector(
+              onTap: () {},
+              child: const Icon(
+                Icons.search,
+                color: Color.fromRGBO(197, 199, 211, 1),
+                size: 30,
+              ),
+            ),
+          ),
           Container(
             margin: const EdgeInsets.only(right: 24.0),
             padding: const EdgeInsets.only(
@@ -576,35 +531,56 @@ class _BoardListScreenState extends State<BoardListScreen> {
                     ),
                     child: GestureDetector(
                       onTap: () {
-                        Get.toNamed("/boardItemsScreen");
+                        // Get.toNamed("/subGroupItemsScreen");
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            height: 24,
-                            width: 24,
-                            margin: const EdgeInsets.all(10),
-                            child: SvgPicture.asset(
-                              color: const Color.fromRGBO(197, 199, 211, 1),
-                              "assets/images/board.svg",
-                              height: 24,
-                              width: 18,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                          isGroup
+                              ? Container(
+                                  height: 24,
+                                  width: 24,
+                                  margin: const EdgeInsets.all(10),
+                                  child: SvgPicture.asset(
+                                    color:
+                                        const Color.fromRGBO(197, 199, 211, 1),
+                                    "assets/images/group.svg",
+                                    height: 24,
+                                    width: 18,
+                                    fit: BoxFit.fill,
+                                  ),
+                                )
+                              : GestureDetector(
+                                  onTap: null,
+                                  child: Container(
+                                    height: 20,
+                                    width: 20,
+                                    margin: const EdgeInsets.only(
+                                      left: 10,
+                                      top: 10,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        width: 2.0,
+                                        color: Colors.grey,
+                                        style: BorderStyle.solid,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                           const SizedBox(
                             width: 15,
                           ),
                           Container(
                             height: 19,
-                            width: 250,
+                            width: 260,
                             margin: const EdgeInsets.only(
                               top: 10,
                             ),
                             child: Text(
-                              "Board ${index + 1}",
+                              "task ${index + 1}",
                               style: const TextStyle(
                                 color: Color(0x44444444),
                                 fontSize: 14,
@@ -616,14 +592,14 @@ class _BoardListScreenState extends State<BoardListScreen> {
                             width: 10,
                           ),
                           Container(
-                            margin: const EdgeInsets.only(
-                              left: 10,
-                            ),
+                            width: 30,
                             padding: const EdgeInsets.only(
                               top: 5,
                             ),
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                print("Pressed more vert.");
+                              },
                               child: const Icon(
                                 Icons.more_vert,
                                 color: Color.fromRGBO(197, 199, 211, 1),
@@ -639,7 +615,7 @@ class _BoardListScreenState extends State<BoardListScreen> {
               ),
             ),
             const SizedBox(
-              height: 5,
+              height: 18,
             ),
           ],
         ),

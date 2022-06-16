@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_management/screens/boardItemsScreen.dart';
 import 'package:task_management/screens/boardListScreen.dart';
 
 import './screens/homeScreen.dart';
@@ -45,6 +46,8 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: "/subGroupItemsScreen", page: () => SubGroupItemsScreen()),
         GetPage(name: "/splashScreen", page: () => const SplashScreen()),
+        GetPage(
+            name: "/boardItemsScreen", page: () => const BoardItemsScreen()),
       ],
       home: const WelcomeScreen(),
     );
