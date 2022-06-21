@@ -19,6 +19,161 @@ class _TaskScreenState extends State<TaskScreen> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+    //this is for home, settings, logout screen
+    void _settingModelBottomSheet() {
+      showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        backgroundColor: const Color(0x44444444),
+        builder: (context) {
+          return Container(
+            height: height - 99,
+            width: width,
+            decoration: const BoxDecoration(
+              color: const Color.fromRGBO(255, 255, 255, 1),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25.0),
+                topRight: Radius.circular(25.0),
+              ),
+            ),
+            alignment: Alignment.topCenter,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 100,
+                  width: width,
+                  margin: const EdgeInsets.only(left: 22, top: 11),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundImage:
+                            Image.asset("assets/images/shovy.jpg").image,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 30,
+                        width: width,
+                        child: const Text(
+                          "Shovy Rahman",
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 2,
+                  width: width,
+                  color: Colors.grey,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                GestureDetector(
+                  onTap: () => Get.offNamed('/homeScreen'),
+                  child: Container(
+                    height: 56,
+                    width: width,
+                    margin: const EdgeInsets.only(
+                      left: 10,
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 40,
+                          child: const Icon(Icons.home),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          width: 40,
+                          child: const Text(
+                            "Home",
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: (() => print("Setting has been pressed.")),
+                  child: Container(
+                    height: 56,
+                    width: width,
+                    margin: const EdgeInsets.only(
+                      left: 10,
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 40,
+                          child: const Icon(Icons.settings),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          width: 60,
+                          child: const Text(
+                            "Settings",
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => print("Logout has been pressed."),
+                  child: Container(
+                    height: 56,
+                    width: width,
+                    margin: const EdgeInsets.only(
+                      left: 10,
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 40,
+                          child: const Icon(Icons.logout),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          width: 60,
+                          child: const Text(
+                            "Logout",
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    }
 
     void _boardColumnDataModelBottomSheet() {
       showModalBottomSheet(
@@ -30,7 +185,7 @@ class _TaskScreenState extends State<TaskScreen> {
             height: height - 99,
             width: width,
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: Colors.red,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(25.0),
                 topRight: Radius.circular(25.0),
@@ -1116,7 +1271,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   ),
                   child: GestureDetector(
                     onTap: () {
-                      print("Search icon has been pressed.");
+                      _settingModelBottomSheet();
                     },
                     child: SvgPicture.asset("assets/images/humber.svg"),
                   ),
