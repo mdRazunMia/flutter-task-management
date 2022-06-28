@@ -42,6 +42,160 @@ class _HomeScreenState extends State<HomeScreen> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
+        elevation: 0.0,
+        iconTheme: const IconThemeData(color: Color.fromRGBO(197, 199, 211, 1)),
+      ),
+      drawer: Drawer(
+        child: SafeArea(
+          child: Container(
+            height: height - 99,
+            width: width,
+            decoration: const BoxDecoration(
+              color: const Color.fromRGBO(255, 255, 255, 1),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25.0),
+                topRight: Radius.circular(25.0),
+              ),
+            ),
+            alignment: Alignment.topCenter,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 100,
+                  width: width,
+                  margin: const EdgeInsets.only(left: 22, top: 11),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundImage:
+                            Image.asset("assets/images/shovy.jpg").image,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 30,
+                        width: width,
+                        child: const Text(
+                          "Shovy Rahman",
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 2,
+                  width: width,
+                  color: Colors.grey,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                GestureDetector(
+                  onTap: () => Get.offNamed('/homeScreen'),
+                  child: Container(
+                    height: 56,
+                    width: width,
+                    margin: const EdgeInsets.only(
+                      left: 10,
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 40,
+                          child: const Icon(Icons.home),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          width: 40,
+                          child: const Text(
+                            "Home",
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: (() => print("Setting has been pressed.")),
+                  child: Container(
+                    height: 56,
+                    width: width,
+                    margin: const EdgeInsets.only(
+                      left: 10,
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 40,
+                          child: const Icon(Icons.settings),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          width: 60,
+                          child: const Text(
+                            "Settings",
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => print("Logout has been pressed."),
+                  child: Container(
+                    height: 56,
+                    width: width,
+                    margin: const EdgeInsets.only(
+                      left: 10,
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 40,
+                          child: const Icon(Icons.logout),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          width: 60,
+                          child: const Text(
+                            "Logout",
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
       floatingActionButton: SpeedDial(
         direction: SpeedDialDirection.left,
         children: [
