@@ -522,7 +522,7 @@ class _BoardItemsScreenState extends State<BoardItemsScreen> {
                       right: 16,
                     ),
                     decoration: BoxDecoration(
-                      // borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         width: 1.0,
                         color: Colors.grey,
