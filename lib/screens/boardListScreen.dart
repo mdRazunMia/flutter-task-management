@@ -717,7 +717,7 @@ class _BoardListScreenState extends State<BoardListScreen> {
                       right: 16,
                     ),
                     decoration: BoxDecoration(
-                      // borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10),
                       border: Border.all(
                         width: 1.0,
                         color: Colors.grey,
