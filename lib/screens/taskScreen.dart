@@ -11,7 +11,7 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
-  bool selectedMode = false;
+  bool selectedMode = true;
 
   int selectedBottomNavigationIndex = 0;
 
@@ -185,7 +185,7 @@ class _TaskScreenState extends State<TaskScreen> {
             height: height - 99,
             width: width,
             decoration: const BoxDecoration(
-              color: Colors.red,
+              color: Colors.white,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(25.0),
                 topRight: Radius.circular(25.0),
@@ -203,6 +203,15 @@ class _TaskScreenState extends State<TaskScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      GestureDetector(
+                        onTap: () => Get.back(),
+                        child: Container(
+                          height: 24,
+                          width: 24,
+                          margin: const EdgeInsets.only(top: 16, left: 28),
+                          child: const Icon(Icons.arrow_back),
+                        ),
+                      ),
                       Container(
                         height: 24,
                         width: 24,
@@ -447,6 +456,15 @@ class _TaskScreenState extends State<TaskScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      GestureDetector(
+                        onTap: () => Get.back(),
+                        child: Container(
+                          height: 24,
+                          width: 24,
+                          margin: const EdgeInsets.only(top: 16, left: 28),
+                          child: const Icon(Icons.arrow_back),
+                        ),
+                      ),
                       Container(
                         height: 24,
                         width: 24,
@@ -691,6 +709,15 @@ class _TaskScreenState extends State<TaskScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      GestureDetector(
+                        onTap: () => Get.back(),
+                        child: Container(
+                          height: 24,
+                          width: 24,
+                          margin: const EdgeInsets.only(top: 16, left: 24),
+                          child: const Icon(Icons.arrow_back),
+                        ),
+                      ),
                       Container(
                         height: 24,
                         width: 24,
@@ -884,6 +911,15 @@ class _TaskScreenState extends State<TaskScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      GestureDetector(
+                        onTap: () => Get.back(),
+                        child: Container(
+                          height: 24,
+                          width: 24,
+                          margin: const EdgeInsets.only(top: 18, left: 28),
+                          child: const Icon(Icons.arrow_back),
+                        ),
+                      ),
                       Container(
                         height: 24,
                         width: 24,
@@ -1056,7 +1092,7 @@ class _TaskScreenState extends State<TaskScreen> {
         backgroundColor: const Color(0x44444444),
         builder: (context) {
           return Container(
-            height: height - 99,
+            height: height - 250,
             width: width,
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -1070,6 +1106,18 @@ class _TaskScreenState extends State<TaskScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                GestureDetector(
+                  onTap: () => Get.back(),
+                  child: Container(
+                    height: 17,
+                    width: 16,
+                    margin: const EdgeInsets.only(top: 24, left: 360),
+                    child: SvgPicture.asset(
+                      'assets/images/cross.svg',
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
                 Container(
                   height: 40,
                   width: width,
@@ -1126,7 +1174,6 @@ class _TaskScreenState extends State<TaskScreen> {
                   height: 40,
                   width: width,
                   margin: const EdgeInsets.only(
-                    top: 36,
                     left: 28,
                   ),
                   child: GestureDetector(
@@ -1176,7 +1223,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   height: 40,
                   width: width,
                   margin: const EdgeInsets.only(
-                    top: 36,
+                    top: 200,
                     left: 28,
                   ),
                   child: GestureDetector(
@@ -1508,18 +1555,21 @@ class _TaskScreenState extends State<TaskScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
-                            height: 20,
-                            width: 20,
-                            margin: const EdgeInsets.only(
-                              left: 10,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                width: 2.0,
-                                color: Colors.grey,
-                                style: BorderStyle.solid,
+                          GestureDetector(
+                            onLongPress: null,
+                            child: Container(
+                              height: 20,
+                              width: 20,
+                              margin: const EdgeInsets.only(
+                                left: 10,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                  width: 2.0,
+                                  color: Colors.grey,
+                                  style: BorderStyle.solid,
+                                ),
                               ),
                             ),
                           ),
